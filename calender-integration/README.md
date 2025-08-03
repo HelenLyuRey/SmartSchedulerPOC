@@ -120,13 +120,12 @@ uvicorn calendar_api_poc:app --reload
 
 ## TODOs & Extensions
 
-Want to build further?
-
-- Auto-generate Google Meet link
-- Add API key/auth for public deployment
+- Meeting booking endpoint that creates events directly in Google Calendar
 - Add priority rules (e.g. prefer mornings or even slots)
 - Integrate with Slack/WhatsApp bot for real-time booking
-- Deploy to cloud (e.g., Vercel, Azure App Service)
+- More advance
+  - Auto-generate Google Meet link
+  - Add API key/auth for public deployment
 
 
 ## Credits
