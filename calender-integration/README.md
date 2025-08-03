@@ -85,7 +85,8 @@ python calendar_availability.py
 ![alt text](image.png)
 
 
-### `calendar_api_poc.py` (FastAPI Server)
+### `calendar_api.py` (FastAPI Server)
+Same functionality as `calender_avalibility.py` only wrapped in FastAPI
 
 #### Run it:
 
@@ -95,59 +96,18 @@ uvicorn calendar_api_poc:app --reload
 
 #### API Endpoints:
 
-##### `GET /suggest`
+##### `POST /calendar/suggest`
 
-Suggests free 30-min time slots (with smart filtering).
-
-Example:
-
+- Method: POST
+- URL: http://127.0.0.1:8000/calendar/suggest
+- Body (raw JSON):
 ```bash
-GET http://127.0.0.1:8000/suggest?days=2&only_afternoon=true&exclude_lunch=true
-```
-
-Query Params:
-- `days`: (default 3) how many days to search
-- `only_afternoon`: skip times before 2PM
-- `exclude_lunch`: skip 12–2PM
-
-
-##### `POST /book`
-
-Creates a Google Calendar event.
-
-Example request:
-
-```
-POST http://127.0.0.1:8000/book
-Content-Type: application/json
-
 {
-  "title": "POC Calendar Test",
-  "start_time": "2025-08-04T15:00:00",
-  "end_time": "2025-08-04T15:30:00",
-  "description": "Test booking from FastAPI",
-  "attendees": ["your.email@gmail.com"]
+  "hours_ahead": 24
 }
 ```
 
-Successful response:
-
-```bash
-{
-  "success": true,
-  "event_link": "https://www.google.com/calendar/event?eid=abc123..."
-}
-```
-
-
-## Smart Suggestion Logic
-
-The suggestion logic uses:
-- Working hours: 9:00 AM – 6:00 PM
-- Optional filters:
-  - Skip lunch (12:00 PM – 2:00 PM)
-  - Only suggest after 2:00 PM
-- Avoids overlaps with any existing busy events in your calendar
+![alt text](image-1.png)
 
 
 
