@@ -97,12 +97,14 @@ def main():
     free_periods, busy_periods = get_events(service, start_of_week, end_of_week)
 
     print("\n⛔ Busy Periods (Hong Kong Time):")
+    print(busy_periods)
     for start, end in busy_periods:
         start_hk = start.astimezone(tz)
         end_hk = end.astimezone(tz)
         print(f"{start_hk.strftime('%Y-%m-%d %H:%M')} to {end_hk.strftime('%Y-%m-%d %H:%M')}")
 
     print(f"\n✅ Free Periods (Hong Kong Time):")
+    print(free_periods)
     for start, end in free_periods:
         start_hk = start.astimezone(tz)
         end_hk = end.astimezone(tz)
